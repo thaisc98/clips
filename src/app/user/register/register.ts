@@ -1,5 +1,5 @@
 import { Component, inject} from '@angular/core';
-import { ReactiveFormsModule, FormBuilder } from '@angular/forms';
+import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
 @Component({
   selector: 'app-register',
   imports: [ReactiveFormsModule],
@@ -10,6 +10,11 @@ export class Register {
   formBuilder = inject(FormBuilder);
 
   form = this.formBuilder.nonNullable.group({
-
+    name: ['', [Validators.required]],
+    email: [''],
+    age: [26],
+    password: [''],
+    confirmPassword: [''],
+    phoneNumber: ['']
   })
 }
