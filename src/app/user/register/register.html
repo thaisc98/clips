@@ -9,6 +9,7 @@
       placeholder="Enter Name"
       formControlName="name"
     />
+    <p>{{form.get("name")?.errors | json}}</p>
   </div>
   <!-- Email -->
   <div class="mb-3">
@@ -20,6 +21,7 @@
       formControlName="name"
       minlength="3"
     />
+    <p>{{form.controls.email.errors| json}}</p>
   </div>
   <!-- Age -->
   <div class="mb-3">
