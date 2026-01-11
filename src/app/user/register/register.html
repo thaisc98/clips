@@ -8,8 +8,16 @@
       class="block w-full py-1.5 px-3 text-gray-200 border border-gray-400 transition duration-500 focus:outline-none rounded bg-transparent focus:border-indigo-400"
       placeholder="Enter Name"
       formControlName="name"
+      minlength="3"
     />
-    <p>{{form.get("name")?.errors | json}}</p>
+    @if (form.get("name")?.hasError('required')){
+      <p class="text-red-400">Field required.</p>
+    }
+     @if (form.get("name")?.hasError('minlength')){
+      <p class="text-red-400">The value you inputted is 
+        {{ form.get("name")?.getError('minlength').actualLength}} characters long. 
+        It most be at least {{ form.get("name")?.getError('minlength').requiredLength }} characters long.</p>
+    }
   </div>
   <!-- Email -->
   <div class="mb-3">
@@ -19,7 +27,7 @@
       class="block w-full py-1.5 px-3 text-gray-200 border border-gray-400 transition duration-500 focus:outline-none rounded bg-transparent focus:border-indigo-400"
       placeholder="Enter Email"
       formControlName="name"
-      minlength="3"
+
     />
     <p>{{form.controls.email.errors| json}}</p>
   </div>
