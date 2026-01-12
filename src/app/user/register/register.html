@@ -1,5 +1,5 @@
 <!-- Registration Form -->
-<form [formGroup]="form" >
+<form [formGroup]="form">
   <!-- Name -->
   <div class="mb-3">
     <label class="inline-block mb-2">Name</label>
@@ -10,13 +10,16 @@
       formControlName="name"
       minlength="3"
     />
-    @if (form.get("name")?.hasError('required')){
-      <p class="text-red-400">Field required.</p>
-    }
-     @if (form.get("name")?.hasError('minlength')){
-      <p class="text-red-400">The value you inputted is 
-        {{ form.get("name")?.getError('minlength').actualLength}} characters long. 
-        It most be at least {{ form.get("name")?.getError('minlength').requiredLength }} characters long.</p>
+    @if (form.controls.name.touched && form.controls.name.dirty &&
+    form.get("name")?.hasError('required')){
+    <p class="text-red-400">Field required.</p>
+    } 
+    @if (form.controls.name.touched && form.controls.name.dirty && form.get("name")?.hasError('minlength')){
+    <p class="text-red-400">
+      The value you inputted is
+      {{ form.get('name')?.getError('minlength').actualLength }} characters long. It most be at
+      least {{ form.get('name')?.getError('minlength').requiredLength }} characters long.
+    </p>
     }
   </div>
   <!-- Email -->
@@ -27,9 +30,8 @@
       class="block w-full py-1.5 px-3 text-gray-200 border border-gray-400 transition duration-500 focus:outline-none rounded bg-transparent focus:border-indigo-400"
       placeholder="Enter Email"
       formControlName="name"
-
     />
-    <p>{{form.controls.email.errors| json}}</p>
+    <p>{{ form.controls.email.errors | json }}</p>
   </div>
   <!-- Age -->
   <div class="mb-3">
