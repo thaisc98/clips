@@ -13,7 +13,7 @@ export class Register {
 
   form = this.formBuilder.nonNullable.group({
     name: ['', [Validators.required, Validators.minLength(3)]],
-    email: [''],
+    email: ['', [Validators.required, Validators.email]],
     age: [26],
     password: [''],
     confirmPassword: [''],
