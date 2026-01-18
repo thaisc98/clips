@@ -14,7 +14,7 @@ export class Register {
   form = this.formBuilder.nonNullable.group({
     name: ['', [Validators.required, Validators.minLength(3)]],
     email: ['', [Validators.required, Validators.email]],
-    age: [26],
+    age: [26, [Validators.required, Validators.min(18), Validators.max(90)]],
     password: [''],
     confirmPassword: [''],
     phoneNumber: ['']
