@@ -23,6 +23,6 @@ export class Register {
       ],
     ],
     confirmPassword: ['', [Validators.required]],
-    phoneNumber: [''],
+    phoneNumber: ['' ,[Validators.required, Validators.minLength(13), Validators.maxLength(13)]],
   });
 }
