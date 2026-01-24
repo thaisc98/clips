@@ -25,4 +25,8 @@ export class Register {
     confirmPassword: ['', [Validators.required]],
     phoneNumber: ['' ,[Validators.required, Validators.minLength(13), Validators.maxLength(13)]],
   });
+
+  register(){
+    console.log("Submitted form")
+  }
 }
