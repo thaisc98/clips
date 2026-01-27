@@ -1,5 +1,5 @@
 <!-- Login Form -->
-<form>
+<form #loginForm="ngForm">
   <!-- Email -->
   <div class="mb-3">
     <label class="inline-block mb-2">Email</label>
@@ -9,7 +9,13 @@
       placeholder="Enter Email"
       name="email"
       [(ngModel)]="credentials.email"
+      required
+      pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?"
+      #email="ngModel"
     />
+    @if (email.errors && email.touched && email.dirty) {
+      <p class="text-red-400">Email is invalid.</p>
+    }
   </div>
   <!-- Password -->
   <div class="mb-3">
