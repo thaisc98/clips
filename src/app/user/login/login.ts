@@ -12,4 +12,9 @@ export class Login {
     email: '',
     password: '',
   };
+
+
+  login(){
+    console.log(this.credentials);
+  }
 }
